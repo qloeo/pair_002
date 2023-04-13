@@ -1,0 +1,1 @@
+## seho1278 - create index, django extension 설치
