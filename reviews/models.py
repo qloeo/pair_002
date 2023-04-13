@@ -5,7 +5,7 @@ from django.conf import settings
 class Review(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=80)
-    content= models.CharField(max_length=500)
+    content= models.TextField()
     movie = models.CharField(max_length=80)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
