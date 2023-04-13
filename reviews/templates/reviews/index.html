@@ -9,13 +9,23 @@
   <input type="submit" value="로그아웃">
   <a href="{% url 'accounts:index' %}">회원정보</a>
 </form>
-
+<a href="{% url 'reviews:create' %}">글 작성</a>
 {% else %}
 <a href="{% url 'accounts:login' %}">로그인</a>
 <a href="{% url 'accounts:signup' %}">회원가입</a>
 
 {% endif %}
 
-
+<hr>
+<ul>
+{% for review in reviews %}
+  <li><a href="#">{{review.pk}}</a></li>
+  <li><a href="#">{{review.movie}}</a></li>
+  <li><a href="#">{{review.user}}</a></li>
+  <li><a href="#">{{review.created_at}}</a></li>
+  <a href="{% url 'reviews:detail' review.pk %}">상세페이지</a>
+  <hr>
+{% endfor %}
+</ul>
 
 {% endblock content %}
