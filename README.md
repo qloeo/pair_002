@@ -1,4 +1,6 @@
-## seho1278 - create index, django extension 설치
+## seho1278
+- index 페이지 생성, django_extension 설치
+- accounts 로그인, 로그아웃, 회원가입, 회원탈퇴, 회원정보
 
 ## qloeo
 - create models : User, Review, Comment
@@ -13,10 +15,12 @@ accounts/urls.py
 app_name = 'accounts'
 
 name
-- "index"  회원정보 조회 - account_index
-- "signup" 회원가입 - signup
-- "login" 로그인 - login
-- "logout" 로그아웃 - logout
+- o "index"  회원정보 조회 - account_index
+- o "signup" 회원가입 - signup
+- o "login" 로그인 - login
+- o "logout" 로그아웃 - logout
+- o "delete" 회원탈퇴 - delete
+
 
 reviews/urls.py
 app_name = 'reviews'
