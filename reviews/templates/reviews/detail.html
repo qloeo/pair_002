@@ -10,6 +10,7 @@
     <li><a href="#">영화 제목 - {{review.movie}}</a></li>
     <li><a href="#">작성자 - {{review.user}}</a></li>
     <li><a href="#">작성일 - {{review.created_at}}</a></li></ul>
+    <a href="{% url 'reviews:update' review.pk %}">글 수정</a>
   <hr>
 
 <a href="{% url 'reviews:index' %}">메인으로</a>
