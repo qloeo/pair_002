@@ -24,6 +24,10 @@
 ## shureeshu
 - merge conflicts, update readme.md
 
+---
+---
+---
+
 
 # 요구사항
 
@@ -41,7 +45,7 @@
 - [ ] 로그인한 사용자는 자신의 사용자 프로필 페이지를 조회할 수 있으며 아래 정보를 확인할 수 있다.
     -  회원이름, 이메일, 작성한 리뷰 목록
 
-| check | 요구사항 | app_name:name | url | view | remark |
+|   | development requirements | app_name:name | url | view | *** |
 |:---:|:---:|:---:|:---:|:---:|:---:|
 | o | 회원정보 조회 | accounts:index |        accounts/ | index() | |
 | o | 로그인 | accounts:login |        accounts/login/ | login() | |
@@ -49,15 +53,20 @@
 | o | 회원가입 | accounts:signup | accounts/signup/ | signup() | |
 | o | 회원탈퇴 | accounts:delete | accounts/delete/ | delete() | |
 | o | 전체 글 조회 | reviews:index | reviews/ | index() | |
-| - | 글 상세 조회, 댓글 조회 | reviews:detail | reviews/<int:review_pk>/ | detail(review_pk) | |
+| o | 글 상세 조회 | reviews:detail | reviews/<int:review_pk>/ | detail(review_pk) | |
+|   | 댓글 조회 | reviews:detail | reviews/<int:review_pk>/ | detail(review_pk) | |
 | o | 글 작성 | reviews:create | reviews/create/ | create() | |
-| o | 글 수정 | reviews:update | reviews/<int:review_pk>/update/ | update(review_pk) | |
-|  | 글 삭제 | reviews:delete | reviews/<int:review_pk>/delete/ | delete(review_pk) | |
-|  | 댓글 작성 | reviews:comment_create | reviews/<int:review_pk>/comment/ | create_comment(review_pk) | |
-|  | 댓글 삭제 | reviews:comment_delete | reviews/<int:review_pk>/comment/<int:comment_pk>/delete/ | delete_comment(review_pk,   comment_pk) | |
+| o | 글 수정 | reviews:update | reviews/ <int:review_pk>/update/ | update(review_pk) | |
+|  | 글 삭제 | reviews:delete | reviews/ <int:review_pk>/delete/ | delete(review_pk) | |
+|  | 댓글 작성 | reviews: comment_create | reviews/ <int:review_pk>/comment/ | create_comment (review_pk) | |
+|  | 댓글 삭제 | reviews: comment_delete | reviews/ <int:review_pk>/comment/ <int:comment_pk>/delete/ | delete_comment (review_pk,comment_pk) | |
+
+---
+---
+---
 
 
-## Try
+# 추가구현
 
 Try. 댓글 개수 출력
 ```
