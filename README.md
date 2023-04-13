@@ -4,7 +4,9 @@
 - create models : User, Review, Comment
 - superuser ( ID: admin , PW: admin1234)
 
-## shureeshu - 요구사항정리
+## shureeshu - 요구사항정리, createform
+
+# 개발명세
 app - reviews, accounts
 
 accounts/urls.py
