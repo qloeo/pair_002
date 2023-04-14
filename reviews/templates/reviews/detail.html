@@ -74,6 +74,19 @@
   <input type="submit" value="댓글 삭제"></input>
 </form>
 {% endif %}
+
+{% if request.user.is_authenticated %}
+<form action="{% url 'reviews:create_recomment' review.pk comment.pk %}" method="POST">
+  {% csrf_token %}
+  {{ recomment_form.as_p }}
+  <input type="submit">
+</form>
+{% endif %}
+
+{% for recomment in comment.recomment_set.all %}
+<p>{{ recomment.user }} - {{ recomment.content }} <span>{{ recomment.created_at }}</span></p>
+{% endfor %}
+
 <hr>
 {% endfor %}
 <a href="{% url 'reviews:index' %}">메인으로</a>

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Review, Comment
-from .forms import CommentForm, ReviewForm
+from .models import Review, Comment, ReComment
+from .forms import CommentForm, ReviewForm, ReCommentForm
 from accounts.forms import CustomUserCreationForm, CustomUserChangeForm
 
 # Create your views here.
@@ -20,12 +20,17 @@ def detail(request, review_pk):
     lastpk = Review.objects.order_by('-pk')[0].pk
     comment_form = CommentForm()
     comments = review.comment_set.all()
+
+    recomment_form = ReCommentForm()
+    # recomments = review.recomment_set.all()
     context = {
         'review': review,
         'comment_form': comment_form,
         'comments': comments,
         'firstpk': firstpk,
         'lastpk': lastpk,
+        # 'recomments': recomments,
+        'recomment_form': recomment_form,
     }
     return render(request, 'reviews/detail.html', context)
 
@@ -89,6 +94,22 @@ def create_comment(request, review_pk):
             comment.review = review
             comment.user = request.user
             comment.save()
+            return redirect('reviews:detail', review.pk)
+    return redirect('reviews:detail', review.pk)
+
+
+@login_required
+def create_recomment(request, review_pk, comment_pk):
+    review = Review.objects.get(pk=review_pk)
+    comment = Comment.objects.get(pk=comment_pk)
+    if request.method == "POST":
+        recomment_form = ReCommentForm(request.POST)
+        if recomment_form.is_valid():
+            recomment = recomment_form.save(commit=False)
+            recomment.comment = comment
+            recomment.review = review
+            recomment.user = request.user
+            recomment.save()
             return redirect('reviews:detail', review.pk)
     return redirect('reviews:detail', review.pk)
 

@@ -14,4 +14,5 @@ urlpatterns = [
     path('<int:review_pk>/next', views.next, name="next"),
     path('<int:review_pk>/review_like', views.review_like, name="review_like"),
     path('<int:review_pk>/comment/<int:comment_pk>/comment_like', views.comment_like, name="comment_like"),
+    path('<int:review_pk>/comment/<int:comment_pk>/recomment', views.create_recomment, name="create_recomment")
 ]
