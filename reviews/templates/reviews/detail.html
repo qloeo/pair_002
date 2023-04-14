@@ -13,6 +13,32 @@
     <a href="{% url 'reviews:update' review.pk %}">글 수정</a>
   <hr>
 
-<a href="{% url 'reviews:index' %}">메인으로</a>
+<hr>
 
+<form action="{% url 'reviews:create_comment' review.pk %}" method="POST">
+  {% csrf_token %}
+  {{ comment_form.as_p }}
+  <input type="submit" value="댓글 작성"></input>
+</form>
+
+<hr>
+
+{% for comment in comments %}
+<p>{{ comment.user }} - {{comment.content}} <span>{{comment.created_at}}</span></p>
+
+{% if comment.user == user %}
+{% csrf_token %}
+<form action="{% url 'reviews:delete_comment' review.pk comment.pk %}" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="댓글 삭제"></input>
+</form>
+{% endif %}
+<hr>
+{% endfor %}
+<a href="{% url 'reviews:index' %}">메인으로</a>
 {% endblock content %}
+
+
+
+
+
