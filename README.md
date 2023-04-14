@@ -47,7 +47,9 @@
 - reviews:index의 html , css 대폭 수정
 - 전체 목록 테이블로 변환
 - logo 만들어서 삽입
-- navbar, footer html, css 수정 
+- navbar, footer html, css 수정
+- detail 페이지 디자인
+- update 버튼:  로그인& 본인글일 때 수정, views.py와 html 변경
 
 ## seho
 - detail 페이지 이전글, 다음글 기능 추가
