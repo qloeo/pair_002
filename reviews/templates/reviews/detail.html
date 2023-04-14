@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+ㄴㅅ
 {% block content %}
   <h1> {{review.pk}}번 글 상세페이지</h1>
   <hr>
@@ -8,6 +8,11 @@
     <li><a href="#">글 제목 - {{review.title}}</a></li>
     <li><a href="#">글 내용 - {{review.content}}</a></li>
     <li><a href="#">영화 제목 - {{review.movie}}</a></li>
+    <li>
+      {% if review.image %}
+        <img src="{{ review.image.url }}" alt="img">
+      {% endif %}
+    </li>
     <li><a href="#">작성자 - {{review.user}}</a></li>
     <li><a href="#">작성일 - {{review.created_at}}</a></li></ul>
     <a href="{% url 'reviews:update' review.pk %}">글 수정</a>

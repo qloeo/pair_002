@@ -26,6 +26,16 @@
 - 리뷰 삭제, 댓글 생성, 삭제
 - 내가 쓴 글 조회
 
+## seho1278
+- accounts 회원정보 수정, 비밀번호 변경
+- accounts user model 확장
+
+## qloeo
+- static BASE 경로 지정
+- 이미지 업로드
+
+
+
 ---
 ---
 ---
