@@ -1,26 +1,95 @@
 
 
-
 {% extends 'base.html' %}
 
+{% block style %}
+
+
+  .main--grid{
+    display: grid;
+    grid-template-columns: 22% 78%;
+    gap: 10px;
+
+  }
+  .sidebar {
+    padding : 1em 2em;
+  }
+  .sidebar h4>span{
+
+  }
+  .sidebar ul {
+    padding: 0;
+  }
+  .sidebar li {
+    list-style: none;
+    margin : 10px 0;
+    
+  }
+
+  .contents{
+    padding : 1em 2em;
+
+  }
+  .user--info span{
+    margin: 0 10px;
+  }
+  .table-sizing{ 
+    text-align: center;
+  }
+  .table--text a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  
+
+{% endblock style %}
+
+
+
+
 {% block content %}
-<h1>index</h1>
-{% if request.user.is_authenticated %}
-<p>{{ user }} 님 안녕하세요</p>
-
-{% endif %}
-
-<hr>
-<ul>
-{% for review in reviews %}
-  <li><a href="#">{{review.pk}}</a></li>
-  <li><a href="#">{{review.movie}}</a></li>
-  <li><a href="#">{{review.user}}</a></li>
-  <li><a href="#">{{review.created_at}}</a></li>
-  <a href="{% url 'reviews:detail' review.pk %}">상세페이지</a>
-  <hr>
-{% endfor %}
-</ul>
+<main class="main--grid">
+  <aside class="sidebar">
+    <h1>Thank you.</h1>
+    {% if request.user.is_authenticated %}
+    <h4><span class="link-underline-primary">{{user.first_name}}</span>님 반가워요!</h4>
+    <hr>
+    <ul class="user--info">
+      <li><span class="badge rounded-pill text-bg-warning">userID</span>{{user}}</li>
+      <li><span class="badge rounded-pill text-bg-success">EMAIL</span>{{ user.email }}</li>
+    </ul>
+    
+    {% endif %}
+  </aside>
+  <article class="contents">
+    <h1>Movie review list</h1>
+    <hr>
+    <table class="table table-light table-sizing">
+      <thead>
+        <tr>
+          <th scope="col">글 번호</th>
+          <th scope="col">영화 제목</th>
+          <th scope="col">작성자</th>
+          <th scope="col">작성 일자</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for review in reviews %}
+        <tr class="table--text">
+          <th scope="row"><a href="{% url 'reviews:detail' review.pk %}">{{review.pk}}</a></th>
+          <td><a href="{% url 'reviews:detail' review.pk %}">{{review.movie}}</a></td>
+          <td><a href="{% url 'reviews:detail' review.pk %}">{{review.user}}</a></td>
+          <td><a href="{% url 'reviews:detail' review.pk %}">{{review.created_at}}</a></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+      </table>
+  </article>
+</main>
 {% endblock content %}
 
 
