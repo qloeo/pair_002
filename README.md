@@ -34,15 +34,15 @@
 - [x] 사용자는 회원가입 / 로그인 / 로그아웃을 할 수 있다.
 - [x] 회원가입을 할 때 아래 정보를 필수로 입력받는다.
     -  회원이름, 이메일, 비밀번호
-- [ ] 사용자는 영화에 대한 리뷰를 조회 / 생성 / 수정 / 삭제룰 할 수 있다.
+- [x] 사용자는 영화에 대한 리뷰를 조회 / 생성 / 수정 / 삭제룰 할 수 있다.
     - 조회, 생성, 수정, 삭제
     - 단, 비로그인 사용자는 조회만 가능하다.
-- [ ] 리뷰를 작성할 때 아래 정보를 필수로 입력받는다.
+- [x] 리뷰를 작성할 때 아래 정보를 필수로 입력받는다.
     -  리뷰 제목, 리뷰 내용, 영화 이름
-- [ ] 사용자는 영화 리뷰에 댓글을 조회 / 생성 / 삭제를 할 수 있다.
+- [x] 사용자는 영화 리뷰에 댓글을 조회 / 생성 / 삭제를 할 수 있다.
     - 조회, 생성, 삭제
     - 단, 비로그인 사용자는 조회만 가능하다.
-- [ ] 로그인한 사용자는 자신의 사용자 프로필 페이지를 조회할 수 있으며 아래 정보를 확인할 수 있다.
+- [x] 로그인한 사용자는 자신의 사용자 프로필 페이지를 조회할 수 있으며 아래 정보를 확인할 수 있다.
     -  회원이름, 이메일, 작성한 리뷰 목록
 
 |   | development requirements | app_name:name | url | view | *** |
@@ -54,12 +54,12 @@
 | o | 회원탈퇴 | accounts:delete | accounts/delete/ | delete() | |
 | o | 전체 글 조회 | reviews:index | reviews/ | index() | |
 | o | 글 상세 조회 | reviews:detail | reviews/<int:review_pk>/ | detail(review_pk) | |
-|   | 댓글 조회 | reviews:detail | reviews/<int:review_pk>/ | detail(review_pk) | |
+| o | 댓글 조회 | reviews:detail | reviews/<int:review_pk>/ | detail(review_pk) | |
 | o | 글 작성 | reviews:create | reviews/create/ | create() | |
 | o | 글 수정 | reviews:update | reviews/ <int:review_pk>/update/ | update(review_pk) | |
-|  | 글 삭제 | reviews:delete | reviews/ <int:review_pk>/delete/ | delete(review_pk) | |
-|  | 댓글 작성 | reviews: comment_create | reviews/ <int:review_pk>/comment/ | create_comment (review_pk) | |
-|  | 댓글 삭제 | reviews: comment_delete | reviews/ <int:review_pk>/comment/ <int:comment_pk>/delete/ | delete_comment (review_pk,comment_pk) | |
+| o | 글 삭제 | reviews:delete | reviews/ <int:review_pk>/delete/ | delete(review_pk) | |
+| o | 댓글 작성 | reviews: comment_create | reviews/ <int:review_pk>/comment/ | create_comment (review_pk) | |
+| o | 댓글 삭제 | reviews: comment_delete | reviews/ <int:review_pk>/comment/ <int:comment_pk>/delete/ | delete_comment (review_pk,comment_pk) | |
 
 ---
 ---
