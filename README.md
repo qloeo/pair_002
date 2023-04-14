@@ -19,10 +19,28 @@
 - ipython 설치
 
 ## qloeo
-- reviews 생성, 조회, 수정
+- Reviews 전체 글 조회, 글 상세 조회, 글 수정, 글 작성
 
 ## shureeshu
 - merge conflicts, update readme.md
+- 리뷰 삭제, 댓글 생성, 삭제
+- 내가 쓴 글 조회
+
+## seho1278
+- accounts 회원정보 수정, 비밀번호 변경
+- accounts user model 확장
+
+## qloeo
+- static BASE 경로 지정
+- 이미지 업로드
+
+## shureeshu
+- base.html
+    - body layout 변경 : header/content/footer
+    - body.header : navbar 생성, 회원관련 버튼 이동
+    
+- index.html
+    - 회원관련 기능 버튼 삭제
 
 ---
 ---
@@ -74,25 +92,25 @@ Try. 댓글 개수 출력
 참고 문서
 ```
 
-Try. 리뷰 영화 이미지 업로드
+Try. 리뷰 영화 이미지 업로드 - 미영
 ```
 사용자가 리뷰 생성시 해당 영화와 관련된 이미지를 업로드할 수 있도록 개선
 업로드 한 이미지를 조회 페이지에서 출력
 ```
 
-Try. 이미지 리사이즈
+Try. 이미지 리사이즈 - 미영
 ```
 django-imagekit 패키지를 활용하여 사용자가 업로드한 이미지 리사이즈
 
 django-imagekit
 ```
 
-Try. User 모델 확장
+Try. User 모델 확장 - 세호
 ```
 User 모델에 추가 필드 작성하여 User 모델 확장
 birthday
 ```
-Try. 회원 정보 수정
+Try. 회원 정보 수정 - 세호
 ```
 [login_required] POST accounts/update/
 CustomUserChangeForm 유효성 검사 후 회원 정보 수정
@@ -100,7 +118,7 @@ redirect GET accounts/
 [login_required] GET accounts/update/
 Django Form을 활용하여 회원 정보 수정 폼 출력
 ```
-Try. 비밀번호 수정
+Try. 비밀번호 수정 - 세호
 ```
 [login_required] POST accounts/password/
 PasswordChangeForm 유효성 검사 후 비밀번호 수정
