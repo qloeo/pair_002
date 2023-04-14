@@ -78,6 +78,7 @@
           <td><a href="{% url 'reviews:detail' review.pk %}">{{review.movie}}</a></td>
           <td><a href="{% url 'reviews:detail' review.pk %}">{{review.user}}</a></td>
           <td><a href="{% url 'reviews:detail' review.pk %}">{{review.created_at}}</a></td>
+          <td><a href="{% url 'reviews:detail' review.pk %}">{{review.comment_set.count}}</a></td>
         </tr>
       {% endfor %}
       </tbody>
