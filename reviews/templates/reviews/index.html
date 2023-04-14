@@ -1,18 +1,12 @@
+
+
+
 {% extends 'base.html' %}
 
 {% block content %}
 <h1>index</h1>
 {% if request.user.is_authenticated %}
 <p>{{ user }} 님 안녕하세요</p>
-<form action="{% url 'accounts:logout' %}" method="POST">
-  {% csrf_token %}
-  <input type="submit" value="로그아웃">
-  <a href="{% url 'accounts:index' %}">회원정보</a>
-</form>
-<a href="{% url 'reviews:create' %}">글 작성</a>
-{% else %}
-<a href="{% url 'accounts:login' %}">로그인</a>
-<a href="{% url 'accounts:signup' %}">회원가입</a>
 
 {% endif %}
 
@@ -27,5 +21,7 @@
   <hr>
 {% endfor %}
 </ul>
-
 {% endblock content %}
+
+
+{% block footer %} reviews/index.html {% endblock footer %}
