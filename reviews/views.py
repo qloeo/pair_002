@@ -16,12 +16,16 @@ def index(request):
 
 def detail(request, review_pk):
     review = Review.objects.get(pk=review_pk)
+    firstpk = Review.objects.order_by('pk')[0].pk
+    lastpk = Review.objects.order_by('-pk')[0].pk
     comment_form = CommentForm()
     comments = review.comment_set.all()
     context = {
         'review': review,
         'comment_form': comment_form,
-        'comments':comments,
+        'comments': comments,
+        'firstpk': firstpk,
+        'lastpk': lastpk,
     }
     return render(request, 'reviews/detail.html', context)
 
@@ -65,7 +69,7 @@ def update(request, review_pk):
     return render(request, 'reviews/update.html', context)
 
 
-
+@login_required
 def delete(request, review_pk):
     review = Review.objects.get(pk=review_pk)
     if request.user == review.user:
@@ -73,6 +77,7 @@ def delete(request, review_pk):
             review.delete()
             return redirect('reviews:index')
     return redirect('reviews:index')
+
 
 @login_required
 def create_comment(request, review_pk):
@@ -87,6 +92,7 @@ def create_comment(request, review_pk):
             return redirect('reviews:detail', review.pk)
     return redirect('reviews:detail', review.pk)
 
+
 @login_required
 def delete_comment(request, review_pk, comment_pk):
     review = Review.objects.get(pk=review_pk)
@@ -97,4 +103,27 @@ def delete_comment(request, review_pk, comment_pk):
             return redirect('reviews:detail', review.pk)
     return redirect('reviews:detail', review.pk)
     
-    
+
+
+def prev(request, review_pk):
+    firstpk = Review.objects.order_by('pk')[0].pk
+
+    if review_pk != firstpk:
+        newpk = review_pk - 1
+        while True:
+            if Review.objects.filter(pk=newpk).exists() == False:
+                newpk -= 1
+            else:
+                return redirect('reviews:detail', newpk)
+
+
+def next(request, review_pk):
+    lastpk = Review.objects.order_by('-pk')[0].pk
+
+    if review_pk != lastpk:
+        newpk = review_pk + 1
+        while True:
+            if Review.objects.filter(pk=newpk).exists() == False:
+                newpk += 1
+            else:
+                return redirect('reviews:detail', newpk)
