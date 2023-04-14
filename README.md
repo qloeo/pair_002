@@ -33,6 +33,7 @@
 ## qloeo
 - static BASE 경로 지정
 - 이미지 업로드
+- install Pillow 
 
 ## shureeshu
 - base.html
@@ -41,8 +42,7 @@
     
 - index.html
     - 회원관련 기능 버튼 삭제
-
----
+    
 ---
 ---
 
