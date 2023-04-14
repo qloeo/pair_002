@@ -17,6 +17,19 @@
     <li><a href="#">작성일 - {{review.created_at}}</a></li></ul>
     <a href="{% url 'reviews:update' review.pk %}">글 수정</a>
   <hr>
+  <div class="d-flex">
+    {% if review.pk == firstpk %}
+    <p>이전글</p>
+    {% else %}
+    <a href="{% url 'reviews:prev' review.pk %}">이전글</a>
+    {% endif %}
+
+    {% if review.pk == lastpk %}
+    <p>다음글</p>
+    {% else %}
+    <a href="{% url 'reviews:next' review.pk %}">다음글</a>
+    {% endif %}
+  </div>
 
 <hr>
 
