@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
-{% block navbar %}
-{% endblock navbar %}
+{% block header %}
+ 
+{% endblock header %}
 
 {% block content %}
-<div class="container login_box">
+<div class="container">
 <h1>login</h1>
 <form action="{% url 'accounts:login' %}" method="POST">
   {% csrf_token %}
@@ -13,3 +14,7 @@
 </form>
 </div>
 {% endblock content %}
+
+{% block footer %}
+ 
+{% endblock footer %}
