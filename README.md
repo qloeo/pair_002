@@ -66,12 +66,12 @@
 | o | 회원탈퇴 | accounts:delete | accounts/delete/ | delete() | |
 | o | 전체 글 조회 | reviews:index | reviews/ | index() | |
 | o | 글 상세 조회 | reviews:detail | reviews/<int:review_pk>/ | detail(review_pk) | |
-|   | 댓글 조회 | reviews:detail | reviews/<int:review_pk>/ | detail(review_pk) | |
+| o | 댓글 조회 | reviews:detail | reviews/<int:review_pk>/ | detail(review_pk) | |
 | o | 글 작성 | reviews:create | reviews/create/ | create() | |
 | o | 글 수정 | reviews:update | reviews/ <int:review_pk>/update/ | update(review_pk) | |
-|  | 글 삭제 | reviews:delete | reviews/ <int:review_pk>/delete/ | delete(review_pk) | |
-|  | 댓글 작성 | reviews: comment_create | reviews/ <int:review_pk>/comment/ | create_comment (review_pk) | |
-|  | 댓글 삭제 | reviews: comment_delete | reviews/ <int:review_pk>/comment/ <int:comment_pk>/delete/ | delete_comment (review_pk,comment_pk) | |
+| o | 글 삭제 | reviews:delete | reviews/ <int:review_pk>/delete/ | delete(review_pk) | |
+| o | 댓글 작성 | reviews: comment_create | reviews/ <int:review_pk>/comment/ | create_comment (review_pk) | |
+| o | 댓글 삭제 | reviews: comment_delete | reviews/ <int:review_pk>/comment/ <int:comment_pk>/delete/ | delete_comment (review_pk,comment_pk) | |
 
 ---
 ---
