@@ -1,0 +1,32 @@
+.main--grid{
+  display: grid;
+  grid-template-columns: 22% 78%;
+  gap: 10px;
+}
+.sidebar {
+  padding : 1em 2em;
+}
+.sidebar ul {
+  padding: 0;
+}
+.sidebar li {
+  list-style: none;
+  margin : 10px 0;
+}
+.contents{
+  padding : 1em 3em 1em 1em;
+
+}
+.user--info span{
+  margin: 0 10px;
+}
+.table-sizing{ 
+  text-align: center;
+}
+.table--text a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}

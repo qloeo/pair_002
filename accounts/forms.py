@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.contrib.auth.forms import UsernameField, AuthenticationForm
 from django.contrib.auth import get_user_model
 
 
@@ -28,3 +29,27 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta(UserChangeForm.Meta):
         model = get_user_model()
         fields = ('email', 'first_name', 'last_name', 'birthday', 'image')
+     
+     
+class CustomAuthenticationForm(AuthenticationForm):
+    username = UsernameField(
+        label='',
+        widget=forms.TextInput(
+            attrs={
+                    'class': 'form-control',
+                    'autofocus': True,
+                    'placeholder':"username",
+                }
+            )
+        )
+    password = forms.CharField(
+        label='',
+        strip=False,
+        widget=forms.PasswordInput(
+            attrs={
+                    'class': 'form-control',
+                    'autocomplete': 'current-password',
+                    'placeholder': "foo@example.com",
+                }
+            ),
+    )

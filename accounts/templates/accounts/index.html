@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+
 <h1>index</h1>
 {% if user.image %}
 <img src="{{ user.image.url }}" alt="">
@@ -26,17 +27,17 @@
 <img src="{% static 'No_Image_Available.jpg' %}" alt="">
 {% endif %}
 {% endif %}
+
 <p>{{ user.username }}</p>
 <p>{{ user.email }}</p>
 <p>{{ user.last_name }}</p>
 <p>{{ user.first_name }}</p>
 <p>{{ user.birthday }}</p>
 
-<a href="{% url 'accounts:update' %}">수정</a>
-
+<a href="{% url 'accounts:update' %}">회원 정보 수정</a>
 <form action="{% url 'accounts:delete' %}" method="POST">
   {% csrf_token %}
-  <input type="submit" value="삭제">
+  <input type="submit" value="회원 탈퇴">
 </form>
 
 <hr>
@@ -47,6 +48,5 @@
 </a>
 <hr>
 {% endfor %}
-
 
 {% endblock content %}
