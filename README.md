@@ -49,6 +49,12 @@
 - logo 만들어서 삽입
 - navbar, footer html, css 수정 
 
+## seho
+- detail 페이지 이전글, 다음글 기능 추가
+- review, comment 좋아요, 취소 기능 추가
+- recomment 기능 추가
+- account 프로필 사진 추가
+
 # 요구사항
 
 - [x] 사용자는 회원가입 / 로그인 / 로그아웃을 할 수 있다.
