@@ -1,20 +1,33 @@
 {% extends 'base.html' %}
 
 {% block header %}
- 
 {% endblock header %}
 
 {% block content %}
+{% load static %}
 <div class="container">
-<h1>login</h1>
-<form action="{% url 'accounts:login' %}" method="POST">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" value="로그인">
-</form>
+  <div class="position-absolute top-50 start-50 translate-middle d-flex flex-column" style="width:auto;">
+    <div class="p-3 border rounded" sytle="width:auto;">
+      <div class="my-2">
+        <img src="{% static 'reviews/logo_black.png' %}" class="img-fluid img-thumbnail" alt="logo_black">
+      </div>
+      <div class="my-2">
+      <form action="{% url 'accounts:login' %}" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="로그인" class="form-control">
+      </form>
+     </div>
+    </div>
+     <div class="p-3 border rounded">
+      <div class="my-3 text-center">
+        <p style="font-size:0.5rem;">아직도 계정이 없으신가요 ? 지금 바로 <a href="{% url 'accounts:signup' %}">회원가입</a>.</p>
+      </div>
+     </div>
+  </div>
 </div>
+
 {% endblock content %}
 
 {% block footer %}
- 
 {% endblock footer %}
