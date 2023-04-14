@@ -35,6 +35,14 @@
 - 이미지 업로드
 
 
+## shureeshu
+- base.html
+    - body layout 변경 : header/content/footer
+    - body.header : navbar 생성, 회원관련 버튼 이동
+    
+- index.html
+    - 회원관련 기능 버튼 삭제
+
 
 ---
 ---
