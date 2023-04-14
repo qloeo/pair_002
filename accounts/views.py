@@ -11,12 +11,12 @@ from .forms import CustomUserCreationForm, CustomUserChangeForm
 # Create your views here.
 @login_required
 def index(request):
-    # user = get_user_model().objects.
-
-    # context = {
-    #     'user': user,
-    # }
-    return render(request, 'accounts/index.html')
+    user = request.user
+    reviews = user.review_set.all()
+    context = {
+        'reviews':reviews,
+    }    
+    return render(request, 'accounts/index.html', context)
 
 
 def login(request):
@@ -57,3 +57,34 @@ def signup(request):
 def delete(request):
     request.user.delete()
     return redirect('reviews:index')
+
+
+@login_required
+def update(request):
+    if request.method == 'POST':
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('accounts:index')
+    else:
+        form = CustomUserChangeForm(instance=request.user)
+    context = {
+        'form': form,
+    }
+    return render(request, 'accounts/update.html', context)
+
+
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            return redirect('accounts:index')
+    else:
+        form = PasswordChangeForm(request.user)
+    context = {
+        'form': form,
+    }
+    return render(request, 'accounts/change_password.html', context)

@@ -34,6 +34,7 @@
 - static BASE 경로 지정
 - 이미지 업로드
 
+
 ## shureeshu
 - base.html
     - body layout 변경 : header/content/footer
@@ -41,6 +42,7 @@
     
 - index.html
     - 회원관련 기능 버튼 삭제
+
 
 ---
 ---
