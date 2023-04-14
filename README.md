@@ -35,7 +35,6 @@
 - 이미지 업로드
 - install Pillow 
 
-
 ## shureeshu
 - base.html
     - body layout 변경 : header/content/footer
@@ -44,7 +43,9 @@
 - index.html
     - 회원관련 기능 버튼 삭제
 
-
+## qloeo
+- reviews:index의 html , css 대폭 수정
+- 전체 목록 테이블로 변환
 
 # 요구사항
 
