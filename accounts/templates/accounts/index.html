@@ -8,6 +8,9 @@
 <p>{{ user.last_name }}</p>
 <p>{{ user.first_name }}</p>
 
+
+<a href="{% url 'accounts:update' %}">수정</a>
+
 <form action="{% url 'accounts:delete' %}" method="POST">
   {% csrf_token %}
   <input type="submit" value="삭제">
