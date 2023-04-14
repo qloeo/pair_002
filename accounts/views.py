@@ -11,12 +11,12 @@ from .forms import CustomUserCreationForm, CustomUserChangeForm
 # Create your views here.
 @login_required
 def index(request):
-    # user = get_user_model().objects.
-
-    # context = {
-    #     'user': user,
-    # }
-    return render(request, 'accounts/index.html')
+    user = request.user
+    reviews = user.review_set.all()
+    context = {
+        'reviews':reviews,
+    }    
+    return render(request, 'accounts/index.html', context)
 
 
 def login(request):
