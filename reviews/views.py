@@ -127,3 +127,24 @@ def next(request, review_pk):
                 newpk += 1
             else:
                 return redirect('reviews:detail', newpk)
+            
+
+@login_required
+def review_like(request, review_pk):
+    review = Review.objects.get(pk=review_pk)
+    if request.user in review.like_users.all():
+        review.like_users.remove(request.user)
+    else:
+        review.like_users.add(request.user)
+    return redirect('reviews:detail', review.pk)
+
+
+@login_required
+def comment_like(request, review_pk, comment_pk):
+    review = Review.objects.get(pk=review_pk)
+    comment = Comment.objects.get(pk=comment_pk)
+    if request.user in comment.like_users.all():
+        comment.like_users.remove(request.user)
+    else:
+        comment.like_users.add(request.user)
+    return redirect('reviews:detail', review.pk)
