@@ -5,3 +5,4 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 class User(AbstractUser):
     birthday = models.DateField(null=True, blank=True)
+    image = models.ImageField(blank=True, upload_to='%Y/%m/%d')

@@ -41,7 +41,7 @@ def logout(request):
 
 def signup(request):
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
+        form = CustomUserCreationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('reviews:index')
@@ -62,7 +62,7 @@ def delete(request):
 @login_required
 def update(request):
     if request.method == 'POST':
-        form = CustomUserChangeForm(request.POST, instance=request.user)
+        form = CustomUserChangeForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
             return redirect('accounts:index')
@@ -88,3 +88,20 @@ def change_password(request):
         'form': form,
     }
     return render(request, 'accounts/change_password.html', context)
+
+
+@login_required
+def profile(request):
+    # if request.method == 'POST':
+    image_select = request.POST.get('profile')
+        
+        # form = CustomUserChangeForm(request.POST, request.FILES, instance=request.user)
+        # if form.is_valid():
+        #     form.save()
+        #     return redirect('accounts:index')
+
+    context = {
+        'image_select': image_select,
+    }
+
+    return render(request, 'accounts/index.html', context)
