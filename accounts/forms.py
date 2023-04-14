@@ -7,20 +7,22 @@ class CustomUserCreationForm(UserCreationForm):
     username = forms.CharField(label='아이디')
     email = forms.CharField(label='이메일')
     last_name = forms.CharField(label='성')
-    first_name = forms.CharField(label='이름')    
+    first_name = forms.CharField(label='이름')
+    birthday = forms.DateField(label='생년월일', widget=forms.DateInput(attrs={'type': 'date'}), required=True)
     password1 = forms.CharField(label='비밀번호', widget=forms.PasswordInput, help_text='문자 포함 8자이상 입력해 주세요')
     password2 = forms.CharField(label='비밀번호 확인', widget=forms.PasswordInput, help_text='비밀번호를 정확히 입력해 주세요')
 
     class Meta(UserCreationForm.Meta):
         model = get_user_model()
-        fields = ('username', 'email', 'first_name', 'last_name', 'password1', 'password2')
+        fields = ('username', 'email', 'first_name', 'last_name', 'birthday', 'password1', 'password2')
 
 
 class CustomUserChangeForm(UserChangeForm):
     email = forms.CharField(label='이메일')
     first_name = forms.CharField(label='이름')
     last_name = forms.CharField(label='성')
+    birthday = forms.DateField(label='생년월일', widget=forms.DateInput(attrs={'type': 'date'}), required=True)
     
     class Meta(UserChangeForm.Meta):
         model = get_user_model()
-        fields = ('email', 'first_name', 'last_name',)
+        fields = ('email', 'first_name', 'last_name', 'birthday')
