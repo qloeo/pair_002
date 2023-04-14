@@ -65,7 +65,7 @@ def update(request, review_pk):
         else:
             form = ReviewForm(instance=review)
     else:
-        return redirect('reviews:index')
+        return redirect('reviews:detail', review.pk)
     
     context = {
         'review': review,
