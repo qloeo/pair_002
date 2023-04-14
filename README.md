@@ -35,6 +35,7 @@
 - 이미지 업로드
 - install Pillow 
 
+
 ## shureeshu
 - base.html
     - body layout 변경 : header/content/footer
@@ -42,9 +43,7 @@
     
 - index.html
     - 회원관련 기능 버튼 삭제
-    
----
----
+
 
 
 # 요구사항

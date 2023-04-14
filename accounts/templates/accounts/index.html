@@ -7,9 +7,23 @@
 <p>{{ user.email }}</p>
 <p>{{ user.last_name }}</p>
 <p>{{ user.first_name }}</p>
+<p>{{ user.birthday }}</p>
+
+<a href="{% url 'accounts:update' %}">수정</a>
 
 <form action="{% url 'accounts:delete' %}" method="POST">
   {% csrf_token %}
   <input type="submit" value="삭제">
 </form>
+
+<hr>
+<h3>내가 쓴 글</h3>
+{% for review in reviews %}
+<a href="{% url 'reviews:detail' review.pk %}">
+  {{ review.pk }} -[ {{ review.movie }} ] {{ review.title }}
+</a>
+<hr>
+{% endfor %}
+
+
 {% endblock content %}
