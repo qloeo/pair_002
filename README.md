@@ -46,6 +46,14 @@
 ## qloeo
 - reviews:index의 html , css 대폭 수정
 - 전체 목록 테이블로 변환
+- logo 만들어서 삽입
+- navbar, footer html, css 수정 
+
+## seho
+- detail 페이지 이전글, 다음글 기능 추가
+- review, comment 좋아요, 취소 기능 추가
+- recomment 기능 추가
+- account 프로필 사진 추가
 
 # 요구사항
 

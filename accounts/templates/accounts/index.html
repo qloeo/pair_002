@@ -1,7 +1,33 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block content %}
+
+<h1>index</h1>
+{% if user.image %}
+<img src="{{ user.image.url }}" alt="">
+{% else %}
+<form action="{% url 'accounts:profile' %}" method="POST">
+  {% csrf_token %}
+  <select name="profile" id="profile">
+    <option value="선택">선택해주세요</option>
+    <option value="배찌">배찌</option>
+    <option value="양파쿵야">양파쿵야</option>
+    <option value="루피">루피</option>
+  </select>
+  <input type="submit" value="적용">
+</form>
+{% if image_select == '배찌' %}
+<img src="{% static 'bazzi.png' %}" alt="">
+{% elif image_select == '양파쿵야' %}
+<img src="{% static 'onion.jpg' %}" alt="">
+{% elif image_select == '루피' %}
+<img src="{% static 'luffy.png' %}" alt="">
+{% else %}
+<img src="{% static 'No_Image_Available.jpg' %}" alt="">
+{% endif %}
+{% endif %}
+
 <p>{{ user.username }}</p>
 <p>{{ user.email }}</p>
 <p>{{ user.last_name }}</p>
