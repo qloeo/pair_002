@@ -60,6 +60,10 @@
 ## shureeshu
 - Login form 수정
 
+## qloeo
+- base.html,css grid 로 구조변경
+
+
 # 요구사항
 
 - [x] 사용자는 회원가입 / 로그인 / 로그아웃을 할 수 있다.
