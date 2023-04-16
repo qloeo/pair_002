@@ -7,18 +7,6 @@
 {% endblock style %}
 
 {% block content %}
-<main class="main--grid">
-  <aside class="sidebar">
-    <h1>Thank you.</h1>
-    {% if request.user.is_authenticated %}
-    <h4><span class="link-underline-primary">{{user.first_name}}</span>님 반가워요!</h4>
-    <hr>
-    <ul class="user--info">
-      <li><span class="badge rounded-pill text-bg-warning">UserID</span>{{user}}</li>
-      <li><span class="badge rounded-pill text-bg-success">EMAIL</span>{{ user.email }}</li>
-    </ul>
-    {% endif %}
-  </aside>
   <article class="contents">
     <div class="contents--header">
       <h1>Movie review list</h1>
@@ -90,53 +78,53 @@
         </div>
       </div>
 
-  <hr>
+    <hr>
 
-  <form action="{% url 'reviews:create_comment' review.pk %}" method="POST">
+    <form action="{% url 'reviews:create_comment' review.pk %}" method="POST">
+      {% csrf_token %}
+      {{ comment_form.as_p }}
+      <input type="submit" value="댓글 작성"></input>
+    </form>
+
+    <hr>
+
+    {% for comment in comments %}
+    <p>{{ comment.user }} - {{comment.content}} <span>{{comment.created_at}}</span></p>
+    {% if request.user in comment.like_users.all %}
+    <a href="{% url 'reviews:comment_like' review.pk comment.pk %}">
+      좋아요 취소
+    </a>
+    {% else %}
+    <a href="{% url 'reviews:comment_like' review.pk comment.pk %}">
+      좋아요
+    </a>
+    {% endif %}
+    <p>{{ comment.like_users.count }}명이 좋아합니다.</p>
+
+    {% if comment.user == user %}
     {% csrf_token %}
-    {{ comment_form.as_p }}
-    <input type="submit" value="댓글 작성"></input>
-  </form>
+    <form action="{% url 'reviews:delete_comment' review.pk comment.pk %}" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="댓글 삭제"></input>
+    </form>
+    {% endif %}
 
-  <hr>
+    {% if request.user.is_authenticated %}
+    <form action="{% url 'reviews:create_recomment' review.pk comment.pk %}" method="POST">
+      {% csrf_token %}
+      {{ recomment_form.as_p }}
+      <input type="submit">
+    </form>
+    {% endif %}
 
-  {% for comment in comments %}
-  <p>{{ comment.user }} - {{comment.content}} <span>{{comment.created_at}}</span></p>
-  {% if request.user in comment.like_users.all %}
-  <a href="{% url 'reviews:comment_like' review.pk comment.pk %}">
-    좋아요 취소
-  </a>
-  {% else %}
-  <a href="{% url 'reviews:comment_like' review.pk comment.pk %}">
-    좋아요
-  </a>
-  {% endif %}
-  <p>{{ comment.like_users.count }}명이 좋아합니다.</p>
+    {% for recomment in comment.recomment_set.all %}
+    <p>{{ recomment.user }} - {{ recomment.content }} <span>{{ recomment.created_at }}</span></p>
+    {% endfor %}
 
-  {% if comment.user == user %}
-  {% csrf_token %}
-  <form action="{% url 'reviews:delete_comment' review.pk comment.pk %}" method="POST">
-    {% csrf_token %}
-    <input type="submit" value="댓글 삭제"></input>
-  </form>
-  {% endif %}
-
-  {% if request.user.is_authenticated %}
-  <form action="{% url 'reviews:create_recomment' review.pk comment.pk %}" method="POST">
-    {% csrf_token %}
-    {{ recomment_form.as_p }}
-    <input type="submit">
-  </form>
-  {% endif %}
-
-  {% for recomment in comment.recomment_set.all %}
-  <p>{{ recomment.user }} - {{ recomment.content }} <span>{{ recomment.created_at }}</span></p>
-  {% endfor %}
-
-  <hr>
-  {% endfor %}
-  <a href="{% url 'reviews:index' %}">메인으로</a>
-</article>
+    <hr>
+    {% endfor %}
+    <a href="{% url 'reviews:index' %}">메인으로</a>
+  </article>
 {% endblock content %}
 
 
